@@ -1,0 +1,19 @@
+{
+    "name": "Nstdspace.UnityCodeGenerator.Editor",
+    "rootNamespace": "Nstdspace.UnityCodeGenerator.Editor",
+    "references": [
+        "Nstdspace.Commons",
+        "Nstdspace.UnityCodeGenerator"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

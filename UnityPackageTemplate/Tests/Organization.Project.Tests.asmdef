@@ -1,0 +1,20 @@
+{
+    "name": "Organization.Project.Tests",
+    "rootNamespace": "Organization.Project.Tests",
+    "references": [
+        "Organization.Project"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": true,
+    "precompiledReferences": [
+        "nunit.framework.dll"
+    ],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
