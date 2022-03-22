@@ -1,17 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
 using UnityEditor.Callbacks;
 
 namespace Nstdspace.UnityCodeGenerator.Editor
 {
-    public class UnityCodeGeneratorHandler
+    public static class UnityCodeGeneratorHandler
     {
         [DidReloadScripts]
-        private static void CreateAssetWhenReady()
+        private static void InvokeGenerators()
         {
-            GetAbstractUnityCodeGenerators()
+            CodeGeneratorResolver
+                .GetUnityCodeGenerators()
                 .ForEach(InvokeGenerator);
         }
 
@@ -20,16 +19,6 @@ namespace Nstdspace.UnityCodeGenerator.Editor
             AbstractUnityCodeGenerator result =
                 (AbstractUnityCodeGenerator) GetDefaultConstructor(generator).Invoke();
             result.GenerateSourceFiles();
-        }
-
-        private static List<Type> GetAbstractUnityCodeGenerators()
-        {
-            List<Type> generators = Assembly.GetAssembly(typeof(AbstractUnityCodeGenerator))
-                .GetTypes()
-                .Where(type => type.IsClass)
-                .Where(type => type.IsSubclassOf(typeof(AbstractUnityCodeGenerator)))
-                .ToList();
-            return generators;
         }
 
         private static ConstructorInfo GetDefaultConstructor(Type type)
