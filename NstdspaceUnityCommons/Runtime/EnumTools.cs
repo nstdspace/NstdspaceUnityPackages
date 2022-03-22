@@ -15,7 +15,7 @@ namespace Nstdspace.Commons
         public static T GetRandomEnumValue<T>(Random random) where T : Enum
         {
             Array values = Enum.GetValues(typeof(T));
-            return (T)values.GetValue(random.Next(values.Length));
+            return (T) values.GetValue(random.Next(values.Length));
         }
 
         public static int GetValueCount<T>()

@@ -31,7 +31,7 @@ namespace Nstdspace.Commons.Extensions
                 index++;
             }
         }
-        
+
         public static void ForEach<T>(this IEnumerable enumerable, Action<T> consumer)
         {
             foreach (T o in enumerable)

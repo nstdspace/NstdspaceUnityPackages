@@ -2,7 +2,7 @@
     "name": "Nstdspace.UnityCodeGenerator.Tests",
     "rootNamespace": "Nstdspace.UnityCodeGenerator.Tests",
     "references": [
-        "GUID:a1271201837b1174ea4cb3ca2e0d1f8e"
+        "Nstdspace.UnityCodeGenerator"
     ],
     "includePlatforms": [
         "Editor"

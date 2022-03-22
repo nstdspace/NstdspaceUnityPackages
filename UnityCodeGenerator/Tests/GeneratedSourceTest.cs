@@ -1,5 +1,4 @@
 ﻿using NUnit.Framework;
-using Things.TowersGame.Editor;
 
 namespace Nstdspace.UnityCodeGenerator.Tests.Tests
 {

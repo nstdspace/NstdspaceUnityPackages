@@ -27,8 +27,8 @@ namespace Nstdspace.Commons
         {
             // left bottom right top
             Vector4 spriteBorder = GetWorldBorder(sprite);
-            Vector2 min = (Vector2)sprite.bounds.min + new Vector2(spriteBorder.x, spriteBorder.y);
-            Vector2 max = (Vector2)sprite.bounds.max - new Vector2(spriteBorder.z, spriteBorder.w);
+            Vector2 min = (Vector2) sprite.bounds.min + new Vector2(spriteBorder.x, spriteBorder.y);
+            Vector2 max = (Vector2) sprite.bounds.max - new Vector2(spriteBorder.z, spriteBorder.w);
             Vector2 centerPosition = min + (max - min) * 0.5f;
             return centerPosition;
         }

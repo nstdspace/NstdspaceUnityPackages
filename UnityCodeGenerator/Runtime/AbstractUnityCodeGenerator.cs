@@ -4,16 +4,19 @@ using System.IO;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
-using Things.TowersGame.Editor;
 using UnityEngine;
 
-namespace Nstdspace.UnityCodeGenerator.Editor {
-    public abstract class AbstractUnityCodeGenerator {
+namespace Nstdspace.UnityCodeGenerator
+{
+    public abstract class AbstractUnityCodeGenerator
+    {
         protected abstract List<GeneratedSource> GenerateSources();
 
-        internal void GenerateSourceFiles() {
+        public void GenerateSourceFiles()
+        {
             List<GeneratedSource> generatedSources = GenerateSources();
-            foreach (GeneratedSource source in generatedSources) {
+            foreach (GeneratedSource source in generatedSources)
+            {
                 string path = ConstructGeneratedSourceFilePath(source);
                 Directory.CreateDirectory(Path.GetDirectoryName(path)!);
 
@@ -24,7 +27,8 @@ namespace Nstdspace.UnityCodeGenerator.Editor {
             }
         }
 
-        private static string ConstructGeneratedSourceFilePath(GeneratedSource source) {
+        private static string ConstructGeneratedSourceFilePath(GeneratedSource source)
+        {
             string[] namespacePaths = source.RelativeNamespace.Split(".");
             List<string> paths = new();
             paths.Add(Directory.GetCurrentDirectory());
@@ -35,8 +39,10 @@ namespace Nstdspace.UnityCodeGenerator.Editor {
             return Path.Combine(paths.ToArray());
         }
 
-        private static void WriteGeneratedSourceFile(string path, string sourceFileContent) {
-            if (!IsOverwriteRequired(path, sourceFileContent)) {
+        private static void WriteGeneratedSourceFile(string path, string sourceFileContent)
+        {
+            if (!IsOverwriteRequired(path, sourceFileContent))
+            {
                 Debug.Log("File contents match generated source, do nothing..");
                 return;
             }
@@ -50,7 +56,8 @@ namespace Nstdspace.UnityCodeGenerator.Editor {
             writer.Close();
         }
 
-        private static bool IsOverwriteRequired(string path, string newContent) {
+        private static bool IsOverwriteRequired(string path, string newContent)
+        {
             using SHA256 hash = SHA256.Create();
             byte[] fileBytes = File.ReadAllBytes(path);
             byte[] newContentBytes = Encoding.UTF8.GetBytes(newContent);
@@ -59,9 +66,11 @@ namespace Nstdspace.UnityCodeGenerator.Editor {
             return !fileContentHash.SequenceEqual(newContentHash);
         }
 
-        private static FileInfo DeleteFile(string path) {
+        private static FileInfo DeleteFile(string path)
+        {
             FileInfo fileInfo = new(path);
-            if (fileInfo.Exists) {
+            if (fileInfo.Exists)
+            {
                 fileInfo.Delete();
             }
             return fileInfo;
