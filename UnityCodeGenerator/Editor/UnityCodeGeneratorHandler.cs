@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Reflection;
+using Nstdspace.Commons.Extensions;
+using UnityEditor;
 using UnityEditor.Callbacks;
 
 namespace Nstdspace.UnityCodeGenerator.Editor
@@ -9,8 +11,7 @@ namespace Nstdspace.UnityCodeGenerator.Editor
         [DidReloadScripts]
         private static void InvokeGenerators()
         {
-            CodeGeneratorResolver
-                .GetUnityCodeGenerators()
+            TypeCache.GetTypesDerivedFrom<AbstractUnityCodeGenerator>()
                 .ForEach(InvokeGenerator);
         }
 
